@@ -94,10 +94,6 @@ function do_duplicity_backup_full () {
     local SOURCE_DIR="${G_BACKUP_ROOT}"
     local TARGET_URL="${G_DUPLICITY_TARGET_URL}"
 
-    # Back up Drupal.
-    do_backup
-
-    # Copy backup to remote.
     cd "${SOURCE_DIR}"
 
     { local ERROR=$(duplicity --no-encryption "--ftp-${G_DUPLICITY_FTP_MODE}" --timeout 180 --name "${NAME}" full "${SOURCE_DIR}" "${TARGET_URL}" 2>&1 1>&$OUT); } {OUT}>&1
