@@ -69,4 +69,6 @@ apt-get install duplicity ncftp python-paramiko python-gobject-2
 
 Run install:
 
-```/ops/ops.sh install```
+```
+cd /ops && bash ops.sh install
+```
