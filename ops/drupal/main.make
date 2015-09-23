@@ -17,6 +17,9 @@ projects[adminimal_admin_menu][type] = "module"
 projects[adminimal_admin_menu][version] = "1.6"
 projects[adminimal_admin_menu][patch][2407007] = "https://www.drupal.org/files/issues/adminimal_admin_menu-js-error-2407007-3-no-whitespace-changes.patch"
 
+projects[better_formats][type] = "module"
+projects[better_formats][version] = "1.x"
+
 projects[boost][type] = "module"
 projects[boost][version] = "1.x"
 projects[boost][patch][1176534] = "https://www.drupal.org/files/no_white_page_if_redirect-1176534-3.patch"
@@ -48,6 +51,9 @@ projects[elements][version] = "1.4"
 
 projects[expire][type] = "module"
 projects[expire][version] = "2.0-rc4"
+
+projects[features][type] = "module"
+projects[features][version] = "2.6"
 
 projects[footer_message][type] = "module"
 projects[footer_message][version] = "1.1"
@@ -107,6 +113,9 @@ projects[security_review][version] = "1.2"
 
 projects[simplehtmldom][type] = "module"
 projects[simplehtmldom][version] = "1.12"
+
+projects[strongarm][type] = "module"
+projects[strongarm][version] = "2.x"
 
 ; projects[talk][type] = "module"
 ; projects[talk][version] = "1.0"
