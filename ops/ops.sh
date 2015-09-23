@@ -44,6 +44,8 @@ fi
 # Load config
 source ${G_CONFIG}
 
+# Set environment variables
+export FTP_PASSWORD="${G_DUPLICITY_FTP_PASSWORD}"
 
 if [ -z "${G_DRUPAL_ROOT}" ]; then
     echo "Please provide a valid Drupal root path in the config"
@@ -51,12 +53,109 @@ if [ -z "${G_DRUPAL_ROOT}" ]; then
 fi
 
 
+# Send mail.
+function do_mail () {
+    /usr/sbin/sendmail -t <<EOF
+From: $1
+Reply-To: $1
+To: $2
+Subject: $3
+
+$4
+EOF
+}
+
+
+# Delete old remote backups.
+function do_duplicity_cleanup () {
+    local NAME=""
+    local SOURCE_DIR="${G_BACKUP_ROOT}"
+    local TARGET_URL="${G_DUPLICITY_TARGET_URL}"
+
+    cd "${SOURCE_DIR}"
+
+    { local ERROR=$(duplicity --force --no-encryption "--ftp-${G_DUPLICITY_FTP_MODE}" --timeout 180 --name "${NAME}" --extra-clean cleanup "${TARGET_URL}" 2>&1 1>&$OUT); } {OUT}>&1
+
+    if [ ! -z "${ERROR}" ]; then
+        echo "Failed to clean up old remote backups (${ERROR})"
+    fi
+
+    { local ERROR=$(duplicity --force --no-encryption "--ftp-${G_DUPLICITY_FTP_MODE}" --timeout 180 --name "${NAME}" remove-all-but-n-full "${G_DUPLICITY_RETAIN_FULL}" "${TARGET_URL}" 2>&1 1>&$OUT); } {OUT}>&1
+
+    if [ ! -z "${ERROR}" ]; then
+        echo "Failed to delete old remote backups (${ERROR})"
+    fi
+}
+
+
+# Perform a full remote backup.
+function do_duplicity_backup_full () {
+    local NAME=""
+    local SOURCE_DIR="${G_BACKUP_ROOT}"
+    local TARGET_URL="${G_DUPLICITY_TARGET_URL}"
+
+    # Back up Drupal.
+    do_backup
+
+    # Copy backup to remote.
+    cd "${SOURCE_DIR}"
+
+    { local ERROR=$(duplicity --no-encryption "--ftp-${G_DUPLICITY_FTP_MODE}" --timeout 180 --name "${NAME}" full "${SOURCE_DIR}" "${TARGET_URL}" 2>&1 1>&$OUT); } {OUT}>&1
+
+    if [ ! -z "${ERROR}" ]; then
+        echo "Failed to perform full remote backup (${ERROR})"
+
+        if [ ${G_BACKUP_NOTIFY} -eq 1 ]; then
+            do_mail "${G_NOTIFY_FROM}" "${G_NOTIFY_TO}" "Duplicity full backup failed" "Failed to perform full remote backup (${ERROR})"
+        fi
+
+        exit 1
+    fi
+}
+
+
+# Restore a remote backup.
+function do_duplicity_restore () {
+    local NAME=""
+    local RESTORE_DIR="${G_DUPLICITY_RESTORE_ROOT}"
+    local TARGET_URL="${G_DUPLICITY_TARGET_URL}"
+
+    rm -fr "${RESTORE_DIR}"
+
+    { local ERROR=$(duplicity --no-encryption "--ftp-${G_DUPLICITY_FTP_MODE}" --timeout 180 --name "${NAME}" restore "${TARGET_URL}" "${RESTORE_DIR}" 2>&1 1>&$OUT); } {OUT}>&1
+
+    if [ ! -z "${ERROR}" ]; then
+        echo "Failed to download remote backup (${ERROR})"
+        exit 1
+    else
+        do_restore "${RESTORE_DIR}"
+    fi
+}
+
+
+# Get status of remote backups.
+function do_duplicity_status () {
+    local NAME=""
+    local SOURCE_DIR="${G_BACKUP_ROOT}"
+    local TARGET_URL="${G_DUPLICITY_TARGET_URL}"
+
+    cd "${SOURCE_DIR}"
+
+    { local ERROR=$(duplicity --no-encryption "--ftp-${G_DUPLICITY_FTP_MODE}" --timeout 180 --name "${NAME}" collection-status "${TARGET_URL}" 2>&1 1>&$OUT); } {OUT}>&1
+
+    if [ ! -z "${ERROR}" ]; then
+        echo "Failed to get status of remote backup (${ERROR})"
+        exit 1
+    fi
+}
+
+
 # Backup of core, contrib and sites
 function do_backup () {
     local FILE="${G_BACKUP_ROOT}/drupal-$(date +%Y%m%d-%H%M%S).tar.gz"
     mkdir -p "${G_BACKUP_ROOT}"
     cd "${G_DRUPAL_ROOT}"
-    drush watchdog-delete all
+    drush watchdog-delete all -y
     drush cc all
     drush sql-query "TRUNCATE cache_form" # Dangerous! In-progress form submissions may break. Only do this when site is offline.
     drush archive-dump default --overwrite --destination="${FILE}"
@@ -65,6 +164,12 @@ function do_backup () {
         echo "Backup file is OK"
     else
         echo "Error: Backup file is corrupted"
+
+        if [ ${G_BACKUP_NOTIFY} -eq 1 ]; then
+            do_mail "${G_NOTIFY_FROM}" "${G_NOTIFY_TO}" "Drupal full backup failed" "Backup file is corrupted"
+        fi
+
+        exit 1
     fi
 }
 
@@ -83,6 +188,12 @@ function do_backup_sites () {
         echo "Backup file is OK"
     else
         echo "Error: Backup file is corrupted"
+
+        if [ ${G_BACKUP_NOTIFY} -eq 1 ]; then
+            do_mail "${G_NOTIFY_FROM}" "${G_NOTIFY_TO}" "Drupal sites backup failed" "Backup file is corrupted"
+        fi
+
+        exit 1
     fi
 }
 
@@ -94,7 +205,15 @@ function do_restore () {
         exit 1
     fi
 
-    cd "${G_BACKUP_ROOT}"
+    local RESTORE_DIR="${G_BACKUP_ROOT}"
+
+    if [ -z "$1" ]; then
+        RESTORE_DIR="${G_BACKUP_ROOT}"
+    else
+        RESTORE_DIR="$1"
+    fi
+
+    cd "${RESTORE_DIR}"
 
     local prompt="Please select a file:"
     local options=( $(find -maxdepth 1 -type f -print0 | xargs -0) )
@@ -521,6 +640,22 @@ case "${G_CMD}" in
         ;;
     "restore")
         do_restore
+        exit 0
+        ;;
+    "duplicity-cleanup")
+        do_duplicity_cleanup
+        exit 0
+        ;;
+    "duplicity-backup-full")
+        do_duplicity_backup_full
+        exit 0
+        ;;
+    "duplicity-restore")
+        do_duplicity_restore
+        exit 0
+        ;;
+    "duplicity-status")
+        do_duplicity_status
         exit 0
         ;;
     "own")

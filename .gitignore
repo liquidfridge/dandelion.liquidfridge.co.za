@@ -31,6 +31,7 @@ secret.json
 
 # Ops
 /ops/backups
+/ops/restore
 /ops/ops.conf
 /ops/ops.host.conf
 /ops/ops.prod.conf
