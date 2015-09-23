@@ -2,6 +2,16 @@
 
 
 
+## Usage
+
+Perform full Drupal backup and copy to remote destination:
+
+```
+cd /ops && bash ops.sh backup && bash ops.sh duplicity-backup-full
+```
+
+
+
 ## Configuration
 
 Create configuration file `/ops/ops.conf` with:
