@@ -450,10 +450,10 @@ function do_own () {
 
 	# If dev mode, make vagrant owner of themes directory (required for rsync with omega themes)
 	if [ "${G_MODE}" == "dev" ]; then
-#		DIR=${G_DRUPAL_ROOT}/sites/all/modules/dandelion
-#		cd ${DIR}
-#		echo -e "Changing ownership of all contents of \"${DIR}\" :\n user => \"vagrant\" \t group => \"vagrant\"\n"
-#		chown -R vagrant:vagrant .
+		DIR=${G_DRUPAL_ROOT}/sites/all/modules/dandelion
+		cd ${DIR}
+		echo -e "Changing ownership of all contents of \"${DIR}\" :\n user => \"vagrant\" \t group => \"vagrant\"\n"
+		chown -R vagrant:vagrant .
 
 		DIR=${G_DRUPAL_ROOT}/sites/all/themes
 		cd ${DIR}
