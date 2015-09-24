@@ -77,6 +77,9 @@ projects[jquery_update][version] = "3.0-alpha2"
 projects[libraries][type] = "module"
 projects[libraries][version] = "2.2"
 
+projects[logging_alerts][type] = "module"
+projects[logging_alerts][version] = "2.2"
+
 projects[login_redirect][type] = "module"
 projects[login_redirect][version] = "1.2"
 projects[login_redirect][patch][2401613] = "https://www.drupal.org/files/issues/change_module_setting_link-2401613-1.patch"
@@ -95,6 +98,9 @@ projects[metatag][version] = "1.7"
 
 projects[panels][type] = "module"
 projects[panels][version] = "3.5"
+
+projects[paranoia][type] = "module"
+projects[paranoia][version] = "1.5"
 
 projects[pathauto][type] = "module"
 projects[pathauto][version] = "1.x"
@@ -125,6 +131,10 @@ projects[token][version] = "1.6"
 
 projects[transliteration][type] = "module"
 projects[transliteration][version] = "3.2"
+
+projects[username_enumeration_prevention][type] = "module"
+projects[username_enumeration_prevention][version] = "1.1"
+projects[username_enumeration_prevention][patch][2401613] = "https://www.drupal.org/files/issues/username-2483015-2.patch"
 
 projects[wysiwyg_filter][type] = "module"
 projects[wysiwyg_filter][version] = "1.x"
