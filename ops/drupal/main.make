@@ -110,7 +110,7 @@ projects[login_redirect][version] = "1.2"
 projects[login_redirect][patch][2401613] = "https://www.drupal.org/files/issues/change_module_setting_link-2401613-1.patch"
 
 projects[media][type] = "module"
-projects[media][version] = "2.x-dev"
+projects[media][version] = "2.x"
 projects[media][download][type] = "git"
 projects[media][download][revision] = "844baf0"
 projects[media][download][branch] = "7.x-2.x"
