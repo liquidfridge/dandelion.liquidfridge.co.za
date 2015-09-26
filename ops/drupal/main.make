@@ -151,6 +151,7 @@ projects[pathologic][download][branch] = "7.x-3.x"
 
 projects[picture][type] = "module"
 projects[picture][version] = "2.12"
+projects[picture][patch][] = "https://raw.github.com/netbek/drupal-patches/7.x/contrib/picture/picture-remove-newline-2574163-2.patch"
 
 projects[plupload][type] = "module"
 projects[plupload][version] = "1.7"
