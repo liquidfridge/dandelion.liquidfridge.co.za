@@ -87,6 +87,12 @@ projects[footnotes][patch][1589130] = "https://www.drupal.org/files/footnotes-wy
 projects[honeypot][type] = "module"
 projects[honeypot][version] = "1.21"
 
+; projects[htmlpurifier][type] = "module"
+; projects[htmlpurifier][version] = "2.x"
+; projects[htmlpurifier][download][type] = "git"
+; projects[htmlpurifier][download][revision] = "802b9f9"
+; projects[htmlpurifier][download][branch] = "7.x-2.x"
+
 projects[httprl][type] = "module"
 projects[httprl][version] = "1.14"
 
@@ -151,7 +157,6 @@ projects[pathologic][download][branch] = "7.x-3.x"
 
 projects[picture][type] = "module"
 projects[picture][version] = "2.12"
-projects[picture][patch][] = "https://raw.github.com/netbek/drupal-patches/7.x/contrib/picture/picture-remove-newline-2574163-2.patch"
 
 projects[plupload][type] = "module"
 projects[plupload][version] = "1.7"
@@ -195,6 +200,7 @@ projects[wysiwyg_filter][version] = "1.x"
 projects[wysiwyg_filter][download][type] = "git"
 projects[wysiwyg_filter][download][revision] = "6c4c920"
 projects[wysiwyg_filter][download][branch] = "7.x-1.x"
+projects[wysiwyg_filter][patch][2575617] = "https://www.drupal.org/files/issues/wysiwyg_filter-support_media_attribute_validation-2575617-1.patch"
 
 projects[xmlsitemap][type] = "module"
 projects[xmlsitemap][version] = "2.2"
@@ -216,6 +222,11 @@ libraries[ckeditor_widget][download][type] = "get"
 libraries[ckeditor_widget][download][url] = "http://download.ckeditor.com/widget/releases/widget_4.4.8.zip"
 libraries[ckeditor_widget][directory_name] = "ckeditor/plugins/widget"
 libraries[ckeditor_widget][type] = "library"
+
+; libraries[htmlpurifier][download][type] = "get"
+; libraries[htmlpurifier][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.7.0.tar.gz"
+; libraries[htmlpurifier][directory_name] = "htmlpurifier"
+; libraries[htmlpurifier][type] = "library"
 
 libraries[plupload][download][type] = "get"
 libraries[plupload][download][url] = "https://github.com/moxiecode/plupload/archive/v1.5.8.zip"
