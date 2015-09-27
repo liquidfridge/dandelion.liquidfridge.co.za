@@ -34,6 +34,13 @@ projects[boost][patch][1957532] = "https://www.drupal.org/files/issues/boost_red
 projects[breakpoints][type] = "module"
 projects[breakpoints][version] = "1.3"
 
+; projects[caption_filter][type] = "module"
+; projects[caption_filter][download][type] = "git"
+; projects[caption_filter][download][revision] = "d799f69"
+; projects[caption_filter][download][branch] = "7.x-1.x"
+; projects[caption_filter][patch][696734] = "https://www.drupal.org/files/issues/ckeditor_alignment_integration_696734-50.patch"
+; projects[caption_filter][patch][2300273] = "https://www.drupal.org/files/issues/caption-filter-2300273-1-single-quote.patch"
+
 projects[ckeditor][type] = "module"
 projects[ckeditor][version] = "1.x"
 projects[ckeditor][download][type] = "git"
@@ -41,6 +48,12 @@ projects[ckeditor][download][revision] = "32f0973"
 projects[ckeditor][download][branch] = "7.x-1.x"
 projects[ckeditor][patch][] = "https://raw.github.com/netbek/drupal-patches/7.x/contrib/ckeditor/ckeditor-instance-config.patch"
 projects[ckeditor][patch][2542566] = "https://www.drupal.org/files/issues/ckeditor-remove_media_integration-2542566-5.patch"
+
+; projects[ckeditor_image2][type] = "module"
+; projects[ckeditor_image2][download][type] = "git"
+; projects[ckeditor_image2][download][revision] = "6d71e6d"
+; projects[ckeditor_image2][download][branch] = "7.x-1.x"
+; projects[ckeditor_image2][download][url] = "http://git.drupal.org/sandbox/jwilson3/2454995.git"
 
 projects[ctools][type] = "module"
 projects[ctools][version] = "1.9"
@@ -87,14 +100,14 @@ projects[footnotes][patch][1589130] = "https://www.drupal.org/files/footnotes-wy
 projects[honeypot][type] = "module"
 projects[honeypot][version] = "1.21"
 
-; projects[htmlpurifier][type] = "module"
-; projects[htmlpurifier][version] = "2.x"
-; projects[htmlpurifier][download][type] = "git"
-; projects[htmlpurifier][download][revision] = "802b9f9"
-; projects[htmlpurifier][download][branch] = "7.x-2.x"
-
 projects[httprl][type] = "module"
 projects[httprl][version] = "1.14"
+
+; projects[icomoon][type] = "module"
+; projects[icomoon][version] = "1.0"
+
+; projects[icon][type] = "module"
+; projects[icon][version] = "1.0-beta6"
 
 projects[ife][type] = "module"
 projects[ife][version] = "2.x"
@@ -127,6 +140,9 @@ projects[media_ckeditor][version] = "2.x"
 projects[media_ckeditor][download][type] = "git"
 projects[media_ckeditor][download][revision] = "7409f2c"
 projects[media_ckeditor][download][branch] = "7.x-2.x"
+
+projects[menu_attributes][type] = "module"
+projects[menu_attributes][version] = "1.0-rc3"
 
 projects[menu_block][type] = "module"
 projects[menu_block][version] = "2.7"
@@ -213,6 +229,16 @@ libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEd
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][type] = "library"
 
+; libraries[ckeditor_dialogui][download][type] = "get"
+; libraries[ckeditor_dialogui][download][url] = "http://download.ckeditor.com/dialogui/releases/dialogui_4.4.8.zip"
+; libraries[ckeditor_dialogui][directory_name] = "ckeditor/plugins/dialogui"
+; libraries[ckeditor_dialogui][type] = "library"
+
+; libraries[ckeditor_image2][download][type] = "get"
+; libraries[ckeditor_image2][download][url] = "http://download.ckeditor.com/image2/releases/image2_4.4.8.zip"
+; libraries[ckeditor_image2][directory_name] = "ckeditor/plugins/image2"
+; libraries[ckeditor_image2][type] = "library"
+
 libraries[ckeditor_lineutils][download][type] = "get"
 libraries[ckeditor_lineutils][download][url] = "http://download.ckeditor.com/lineutils/releases/lineutils_4.4.8.zip"
 libraries[ckeditor_lineutils][directory_name] = "ckeditor/plugins/lineutils"
@@ -222,11 +248,6 @@ libraries[ckeditor_widget][download][type] = "get"
 libraries[ckeditor_widget][download][url] = "http://download.ckeditor.com/widget/releases/widget_4.4.8.zip"
 libraries[ckeditor_widget][directory_name] = "ckeditor/plugins/widget"
 libraries[ckeditor_widget][type] = "library"
-
-; libraries[htmlpurifier][download][type] = "get"
-; libraries[htmlpurifier][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.7.0.tar.gz"
-; libraries[htmlpurifier][directory_name] = "htmlpurifier"
-; libraries[htmlpurifier][type] = "library"
 
 libraries[plupload][download][type] = "get"
 libraries[plupload][download][url] = "https://github.com/moxiecode/plupload/archive/v1.5.8.zip"
