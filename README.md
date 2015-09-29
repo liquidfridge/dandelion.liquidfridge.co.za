@@ -2,6 +2,10 @@
 
 
 
+## To do
+
+
+
 ## Usage
 
 Perform full Drupal backup and copy to remote destination:
@@ -55,6 +59,19 @@ G_DUPLICITY_FTP_MODE="passive"                          # FTP mode for remote ba
 
 G_NOTIFY_FROM=""                                        # Notification from email address
 G_NOTIFY_TO=""                                          # Notification to email address
+```
+
+
+
+## Usage
+
+Unban an IP address:
+
+```
+mysql -u root -p
+use $DATABASE
+delete from blocked_ips where ip = '$IP';
+delete from login_security_track where host = '$IP';
 ```
 
 
