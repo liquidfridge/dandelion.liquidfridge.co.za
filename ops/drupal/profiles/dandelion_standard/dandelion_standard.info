@@ -54,6 +54,7 @@ dependencies[] = ife
 dependencies[] = jquery_update
 dependencies[] = libraries
 dependencies[] = login_redirect
+dependencies[] = login_security
 dependencies[] = media
 dependencies[] = media_bulk_upload
 dependencies[] = media_ckeditor

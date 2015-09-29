@@ -134,6 +134,12 @@ projects[login_redirect][type] = "module"
 projects[login_redirect][version] = "1.2"
 projects[login_redirect][patch][2401613] = "https://www.drupal.org/files/issues/change_module_setting_link-2401613-1.patch"
 
+projects[login_security][type] = "module"
+projects[login_security][version] = "1.x"
+projects[login_security][download][type] = "git"
+projects[login_security][download][revision] = "bb4ec66"
+projects[login_security][download][branch] = "7.x-1.x"
+
 projects[media][type] = "module"
 projects[media][version] = "2.x"
 projects[media][download][type] = "git"
