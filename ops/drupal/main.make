@@ -55,6 +55,12 @@ projects[ckeditor][patch][2542566] = "https://www.drupal.org/files/issues/ckedit
 ; projects[ckeditor_image2][download][branch] = "7.x-1.x"
 ; projects[ckeditor_image2][download][url] = "http://git.drupal.org/sandbox/jwilson3/2454995.git"
 
+projects[ckeditor_link][type] = "module"
+projects[ckeditor_link][version] = "2.x"
+projects[ckeditor_link][download][type] = "git"
+projects[ckeditor_link][download][revision] = "de4a8b8"
+projects[ckeditor_link][download][branch] = "7.x-2.x"
+
 projects[ctools][type] = "module"
 projects[ctools][version] = "1.9"
 

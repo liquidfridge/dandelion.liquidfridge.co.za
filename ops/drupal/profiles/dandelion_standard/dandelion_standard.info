@@ -33,6 +33,7 @@ dependencies[] = boost
 dependencies[] = boost_crawler
 dependencies[] = breakpoints
 dependencies[] = ckeditor
+dependencies[] = ckeditor_link
 dependencies[] = ctools
 dependencies[] = dandelion
 dependencies[] = dandelion_boost
