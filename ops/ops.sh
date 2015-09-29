@@ -287,7 +287,12 @@ function do_secure () {
     rm -fr "${DIR}/src"
     rm -fr "${DIR}/test"
 
-	# Set the ownership of directories and files
+    if [ "${G_MODE}" == "prod" ]; then
+        DIR=${G_DRUPAL_ROOT}/sites/all/themes/phoebe
+        rm -f "${DIR}/sync.sh"
+    fi
+
+    # Set the ownership of directories and files
     do_own
 
     # Set the default permissions for all directories and files
@@ -409,7 +414,7 @@ function do_unsecure () {
     echo "Removing .info files from node_modules directories"
     find . -type d -name 'node_modules' -exec find {} -name '*.info' -type f -delete \;
 
-	# Set the ownership of directories and files
+    # Set the ownership of directories and files
     do_own
 
     # Set the default permissions for all directories and files
@@ -448,18 +453,18 @@ function do_own () {
     echo -e "Changing ownership of all contents of \"${DIR}\" :\n user => \"${G_USER}\" \t group => \"${G_GROUP}\"\n"
     chown -R ${G_USER}:${G_GROUP} .
 
-	# If dev mode, make vagrant owner of themes directory (required for rsync with omega themes)
-	if [ "${G_MODE}" == "dev" ]; then
-		DIR=${G_DRUPAL_ROOT}/sites/all/modules/dandelion
-		cd ${DIR}
-		echo -e "Changing ownership of all contents of \"${DIR}\" :\n user => \"vagrant\" \t group => \"vagrant\"\n"
-		chown -R vagrant:vagrant .
+    # If dev mode, make vagrant owner of themes directory (required for rsync with omega themes)
+    if [ "${G_MODE}" == "dev" ]; then
+        DIR=${G_DRUPAL_ROOT}/sites/all/modules/dandelion
+        cd ${DIR}
+        echo -e "Changing ownership of all contents of \"${DIR}\" :\n user => \"vagrant\" \t group => \"vagrant\"\n"
+        chown -R vagrant:vagrant .
 
-		DIR=${G_DRUPAL_ROOT}/sites/all/themes
-		cd ${DIR}
-		echo -e "Changing ownership of all contents of \"${DIR}\" :\n user => \"vagrant\" \t group => \"vagrant\"\n"
-		chown -R vagrant:vagrant .
-	fi
+        DIR=${G_DRUPAL_ROOT}/sites/all/themes
+        cd ${DIR}
+        echo -e "Changing ownership of all contents of \"${DIR}\" :\n user => \"vagrant\" \t group => \"vagrant\"\n"
+        chown -R vagrant:vagrant .
+    fi
 }
 
 
@@ -589,7 +594,7 @@ function do_install () {
         --site-mail="${G_DRUPAL_SITE_MAIL}"
 
     # Create Boost cache directory
-	mkdir -p ${G_DRUPAL_ROOT}/cache
+    mkdir -p ${G_DRUPAL_ROOT}/cache
 
     # Set file permissions
     do_secure
