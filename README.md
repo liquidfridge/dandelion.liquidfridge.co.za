@@ -43,7 +43,7 @@ G_DRUPAL_ROOT="${G_PUBLIC_ROOT}/drupal"                 # Drupal installation di
 G_DRUPAL_PROFILE="dandelion_standard"                   # Installation profile name
 G_DRUPAL_SITE_NAME=""                                   # Site name
 G_DRUPAL_SITE_MAIL=""                                   # Site email
-G_DRUPAL_ADMIN_USER=""                                  # Admin username
+G_DRUPAL_ADMIN_USER=""                                  # Admin username (do not use "admin")
 G_DRUPAL_ADMIN_PASS=""                                  # Admin password
 G_DRUPAL_ADMIN_MAIL=""                                  # Admin email
 
