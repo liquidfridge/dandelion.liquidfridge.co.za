@@ -562,6 +562,29 @@ function do_update_contrib () {
 }
 
 
+# Export features
+function do_features_export () {
+    local SRC="${G_HOME}/ops/drupal/features.txt"
+
+    if [ ! -s "${SRC}" ]; then
+        echo "Drupal features file does not exist or is empty: ${SRC}"
+        exit 1
+    fi
+
+    local MODULE="dandelion_features"
+
+    OLDIFS="$IFS"
+    IFS=$'\n'
+    local ARRAY=($(<${SRC}))
+    IFS="$OLDIFS"
+
+    cd "${G_DRUPAL_ROOT}"
+
+    rm -fr "sites/all/modules/${MODULE}"
+    drush fe -y ${MODULE} "${ARRAY[@]}"
+}
+
+
 # Install Drupal
 function do_install () {
     local MAKE="${G_HOME}/ops/drupal/main.make"
@@ -677,6 +700,10 @@ case "${G_CMD}" in
         ;;
     "update-contrib")
         do_update_contrib "$2"
+        exit 0
+        ;;
+    "features-export")
+        do_features_export
         exit 0
         ;;
     "install")

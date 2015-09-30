@@ -69,6 +69,11 @@ projects[dandelion][download][type] = "git"
 projects[dandelion][download][branch] = "7.x-1.x"
 projects[dandelion][download][url] = "https://github.com/liquidfridge/dandelion.git"
 
+projects[dandelion_features][type] = "module"
+projects[dandelion_features][download][type] = "git"
+projects[dandelion_features][download][branch] = "7.x-1.x"
+projects[dandelion_features][download][url] = "https://github.com/liquidfridge/dandelion_features.git"
+
 projects[devel][type] = "module"
 projects[devel][version] = "1.5"
 

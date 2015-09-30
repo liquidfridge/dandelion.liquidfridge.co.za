@@ -37,6 +37,7 @@ dependencies[] = ckeditor_link
 dependencies[] = ctools
 dependencies[] = dandelion
 dependencies[] = dandelion_boost
+dependencies[] = dandelion_features
 dependencies[] = diff
 dependencies[] = elements
 dependencies[] = emaillog
