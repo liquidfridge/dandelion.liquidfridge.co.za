@@ -61,6 +61,9 @@ projects[ckeditor_link][download][type] = "git"
 projects[ckeditor_link][download][revision] = "de4a8b8"
 projects[ckeditor_link][download][branch] = "7.x-2.x"
 
+projects[conflict][type] = "module"
+projects[conflict][version] = "1.0"
+
 projects[ctools][type] = "module"
 projects[ctools][version] = "1.9"
 
