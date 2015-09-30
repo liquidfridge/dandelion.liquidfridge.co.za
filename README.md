@@ -6,6 +6,25 @@
 
 
 
+## Backups
+
+Create `/path/to/ops/cron-daily.sh`:
+
+```
+#!/usr/bin/env bash
+
+cd /path/to/ops
+bash ops.sh duplicity-cleanup && bash ops.sh backup && bash ops.sh duplicity-backup-full
+```
+
+`crontab -e` and add:
+
+```
+0 1 * * * /path/to/ops/cron-daily.sh
+```
+
+
+
 ## Usage
 
 Perform full Drupal backup and copy to remote destination:
