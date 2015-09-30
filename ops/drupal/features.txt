@@ -14,6 +14,7 @@ file_type:*
 filter:*
 
 menu_custom:menu-footer-menu
+menu_custom:menu-front-menu
 
 menu_links:menu-footer-menu:*
 
