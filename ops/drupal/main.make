@@ -95,6 +95,12 @@ projects[expire][version] = "2.0-rc4"
 projects[features][type] = "module"
 projects[features][version] = "2.6"
 
+projects[features_extra][type] = "module"
+projects[features_extra][version] = "1.x"
+projects[features_extra][download][type] = "git"
+projects[features_extra][download][revision] = "dcf9ad9"
+projects[features_extra][download][branch] = "7.x-1.x"
+
 projects[file_entity][type] = "module"
 projects[file_entity][version] = "2.0-beta2"
 

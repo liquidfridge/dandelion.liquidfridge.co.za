@@ -42,6 +42,7 @@ dependencies[] = diff
 dependencies[] = elements
 dependencies[] = emaillog
 dependencies[] = expire
+dependencies[] = fe_block
 dependencies[] = features
 dependencies[] = file_entity
 dependencies[] = footer_message
