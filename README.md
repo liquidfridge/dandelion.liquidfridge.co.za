@@ -2,10 +2,6 @@
 
 
 
-## To do
-
-
-
 ## Backup with cron
 
 Create `/path/to/ops/cron-daily.sh`:
