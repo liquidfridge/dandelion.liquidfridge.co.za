@@ -1022,6 +1022,9 @@ FileETag None
 
 	### BOOST END ###
 
+	# Temporary fix for https://github.com/liquidfridge/dandelion.liquidfridge.co.za/issues/4
+	RewriteRule ^(.*)sites/all/modules/media/modules/media_wysiwyg/wysiwyg_plugins/media_ckeditor/(.+) $1sites/all/modules/media_ckeditor/js/plugins/media/$2 [L,QSA]
+
 	# Rewrite rule for front page
 	RewriteRule ^$ drupal/ [L]
 
