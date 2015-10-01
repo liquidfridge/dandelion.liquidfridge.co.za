@@ -155,7 +155,10 @@ projects[login_security][download][revision] = "bb4ec66"
 projects[login_security][download][branch] = "7.x-1.x"
 
 projects[media][type] = "module"
-projects[media][version] = "2.0-beta1"
+projects[media][version] = "2.x"
+projects[media][download][type] = "git"
+projects[media][download][revision] = "cba92a0"
+projects[media][download][branch] = "7.x-2.x"
 projects[media][patch][951004] = "https://www.drupal.org/files/issues/allow_selecting_of-951004-136.patch"
 
 projects[media_ckeditor][type] = "module"
