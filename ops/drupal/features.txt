@@ -294,6 +294,7 @@ variable:path_alias_whitelist
 variable:pathauto_blog_pattern
 variable:pathauto_file_pattern
 variable:pathauto_forum_pattern
+variable:pathauto_node_admin_help_page_pattern
 variable:pathauto_node_book_pattern
 variable:pathauto_node_page_pattern
 variable:pathauto_node_pattern
