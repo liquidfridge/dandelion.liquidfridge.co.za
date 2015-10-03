@@ -9,7 +9,7 @@ Create `/path/to/ops/cron-daily.sh`:
 ```
 #!/usr/bin/env bash
 
-cd /path/to/ops && bash ops.sh duplicity-cleanup && bash ops.sh backup && bash ops.sh duplicity-backup-full
+cd /path/to/ops && bash ops.sh duplicity-cleanup && bash ops.sh backup && bash ops.sh cleanup && bash ops.sh duplicity-backup-full
 ```
 
 `crontab -e` and add:
