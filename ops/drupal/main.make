@@ -64,6 +64,9 @@ projects[ckeditor_link][download][branch] = "7.x-2.x"
 projects[conflict][type] = "module"
 projects[conflict][version] = "1.0"
 
+projects[content_access][type] = "module"
+projects[content_access][version] = "1.2-beta2"
+
 projects[ctools][type] = "module"
 projects[ctools][version] = "1.9"
 
@@ -224,6 +227,12 @@ projects[strongarm][download][type] = "git"
 projects[strongarm][download][revision] = "5a2326b"
 projects[strongarm][download][branch] = "7.x-2.x"
 
+projects[theme_context][type] = "module"
+projects[theme_context][download][type] = "git"
+projects[theme_context][download][branch] = "7.x-1.x"
+projects[theme_context][download][revision] = "ab87e22"
+projects[theme_context][download][url] = "git://git.drupal.org/sandbox/netbek/2420451.git"
+
 projects[token][type] = "module"
 projects[token][version] = "1.6"
 
@@ -286,6 +295,11 @@ libraries[plupload][patch][1903850] = "http://drupal.org/files/issues/plupload-1
 ; Themes
 projects[adminimal_theme][type] = "theme"
 projects[adminimal_theme][version] = "1.22"
+
+projects[hyperion][type] = "theme"
+projects[hyperion][download][type] = "git"
+projects[hyperion][download][branch] = "7.x-1.x"
+projects[hyperion][download][url] = "https://github.com/liquidfridge/hyperion.git"
 
 projects[omega][type] = "theme"
 projects[omega][version] = "4.4"
