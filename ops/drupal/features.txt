@@ -114,6 +114,7 @@ variable:comment_preview_page
 variable:comment_subject_field_book
 variable:comment_subject_field_page
 variable:configurable_timezones
+variable:content_access_admin_help_page
 variable:dandelion_front_page_body
 variable:dandelion_front_page_footer
 variable:dandelion_front_page_title
