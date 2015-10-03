@@ -14,7 +14,7 @@
  */
 function dandelion_standard_install() {
   // Enable themes.
-  theme_enable(array('adminimal', 'omega', 'phoebe'));
+  theme_enable(array('adminimal', 'hyperion', 'omega', 'phoebe'));
   theme_disable(array('bartik'));
 
   // Allow visitor account creation, but with administrative approval.
