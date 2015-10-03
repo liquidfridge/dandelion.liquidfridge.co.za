@@ -146,6 +146,25 @@ function do_duplicity_status () {
 }
 
 
+# Delete old backups.
+function do_cleanup () {
+    if [ -z "${G_BACKUP_ROOT}" ] || [ ! -d "${G_BACKUP_ROOT}" ]; then
+        return
+    fi
+
+    cd "${G_BACKUP_ROOT}"
+
+    local i=0
+    while read line
+    do
+        if [ "$i" -ge "${G_DUPLICITY_RETAIN_FULL}" ]; then
+            rm -f "${line}"
+        fi
+    (( i++ ))
+    done < <(ls -t `find . -maxdepth 1 -name '*.tar.gz' -type f`)
+}
+
+
 # Backup of core, contrib and sites
 function do_backup () {
     local FILE="${G_BACKUP_ROOT}/drupal-$(date +%Y%m%d-%H%M%S).tar.gz"
@@ -654,6 +673,10 @@ function do_install_drush_ini () {
 
 
 case "${G_CMD}" in
+    "cleanup")
+        do_cleanup
+        exit 0
+        ;;
     "backup")
         do_backup
         exit 0
