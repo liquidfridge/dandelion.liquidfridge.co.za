@@ -307,6 +307,8 @@ function do_secure () {
     rm -fr "${DIR}/test"
 
     if [ "${G_MODE}" == "prod" ]; then
+        DIR=${G_DRUPAL_ROOT}/sites/all/themes/hyperion
+        rm -f "${DIR}/sync.sh"
         DIR=${G_DRUPAL_ROOT}/sites/all/themes/phoebe
         rm -f "${DIR}/sync.sh"
     fi
