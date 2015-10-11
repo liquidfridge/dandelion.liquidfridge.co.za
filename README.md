@@ -2,6 +2,50 @@
 
 
 
+## Features
+
+The bulk of the Drupal configuration, e.g. permissions, is stored in code in the `dandelion_features` module. A few system variables differ between the development and production servers, e.g. site name. These are configured on the production server directly.
+
+### Development
+
+After changing the configuration via the administration pages, run the following to save the configuration to code and push to remote repository:
+
+```
+cd /ops && bash ops.sh features-export
+cd /path/to/sites/all/modules/dandelion_features
+git commit -a -m "Commit message here"
+git push
+```
+
+### Production
+
+To deploy the updated configuration, run:
+
+```
+cd /ops && bash ops.sh update-contrib dandelion_features
+```
+
+If changes were made on the production server (not recommended), that override those set by `dandelion_features`, then run from Drupal root:
+
+```
+drush fr dandelion_features
+```
+
+
+
+## Usage
+
+Unban an IP address:
+
+```
+mysql -u root -p
+use $DATABASE
+delete from blocked_ips where ip = '$IP';
+delete from login_security_track where host = '$IP';
+```
+
+
+
 ## Backup with cron
 
 Create `/path/to/ops/cron-daily.sh`:
@@ -63,19 +107,6 @@ G_DUPLICITY_FTP_MODE="passive"                          # FTP mode for remote ba
 
 G_NOTIFY_FROM=""                                        # Notification from email address
 G_NOTIFY_TO=""                                          # Notification to email address
-```
-
-
-
-## Usage
-
-Unban an IP address:
-
-```
-mysql -u root -p
-use $DATABASE
-delete from blocked_ips where ip = '$IP';
-delete from login_security_track where host = '$IP';
 ```
 
 
