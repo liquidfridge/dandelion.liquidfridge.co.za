@@ -600,6 +600,7 @@ function do_features_export () {
     IFS="$OLDIFS"
 
     cd "${G_DRUPAL_ROOT}"
+    drush cc all
 
     rm -fr "sites/all/modules/${MODULE}"
     drush fe -y ${MODULE} "${ARRAY[@]}"
