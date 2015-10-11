@@ -64,6 +64,32 @@ cd /path/to/ops && bash ops.sh duplicity-cleanup && bash ops.sh backup && bash o
 
 
 
+## Backup with git
+
+A single-page version of the notes at `http://dandelion.liquidfridge.co.za/book/export/html/%nid` is mirrored to a git repository `https://github.com/liquidfridge/dandelion-notes`
+
+Initialize the local repository on the production server:
+
+```
+cd /path/to/ops && bash ops.sh notes-init
+```
+
+Create `/path/to/ops/cron-notes.sh`:
+
+```
+#!/usr/bin/env bash
+
+cd /path/to/ops && bash ops.sh notes-push
+```
+
+`crontab -e` and add, e.g. to run every 5 minutes:
+
+```
+*/5 * * * * /path/to/ops/cron-notes.sh
+```
+
+
+
 ## Configuration
 
 Create configuration file `/ops/ops.conf` with:
@@ -107,6 +133,14 @@ G_DUPLICITY_FTP_MODE="passive"                          # FTP mode for remote ba
 
 G_NOTIFY_FROM=""                                        # Notification from email address
 G_NOTIFY_TO=""                                          # Notification to email address
+
+G_GIT_AUTHOR_NAME=""                                    # Name of author of git commits
+G_GIT_AUTHOR_EMAIL=""                                   # Email of author of git commits
+
+G_NOTES_ROOT=""                                         # Parent directory of local repo
+G_NOTES_REPO_URL=""                                     # SSH URL of remote repo
+G_NOTES_REPO_NAME="dandelion-notes"                     # Name of repo
+G_NOTES_EXPORT_URL=""                                   # URL to download and save to repo
 ```
 
 

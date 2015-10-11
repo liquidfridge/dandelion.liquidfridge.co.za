@@ -66,6 +66,47 @@ EOF
 }
 
 
+# Initialize local repository used for backing up notes to remote git.
+function do_notes_init () {
+    cd "${G_NOTES_ROOT}"
+    rm -fr "${G_NOTES_REPO_NAME}"
+
+    git config --global user.name "${G_GIT_AUTHOR_NAME}"
+    git config --global user.email "${G_GIT_AUTHOR_EMAIL}"
+
+    git clone "${G_NOTES_REPO_URL}"
+}
+
+
+# Push (back up) notes to remote git.
+function do_notes_push () {
+    cd "${G_NOTES_ROOT}/${G_NOTES_REPO_NAME}"
+
+    wget --recursive --page-requisites --convert-links --no-parent "${G_NOTES_EXPORT_URL}"
+
+    # Remove everything after closing tag, e.g. Boost comment with timestamp
+    sed '/<\/html>/q' "${G_NOTES_EXPORT_URL}" > "${G_NOTES_EXPORT_URL}.tmp"
+    mv "${G_NOTES_EXPORT_URL}.tmp" "${G_NOTES_EXPORT_URL}"
+
+    # Check if initial commit or not
+    local STATUS=$(git status | grep -i "Initial commit")
+    # Check for changes
+    local DIFF=$(git diff)
+
+    if [ -z "${STATUS}" ]; then
+        if [ ! -z "${DIFF}" ]; then
+            git add .
+            git commit -a -m "Update"
+            git push -u origin master
+        fi
+    else
+        git add .
+        git commit -a -m "Initial commit"
+        git push -u origin master
+    fi
+}
+
+
 # Delete old remote backups.
 function do_duplicity_cleanup () {
     local NAME=""
@@ -678,6 +719,14 @@ function do_install_drush_ini () {
 case "${G_CMD}" in
     "cleanup")
         do_cleanup
+        exit 0
+        ;;
+    "notes-init")
+        do_notes_init
+        exit 0
+        ;;
+    "notes-push")
+        do_notes_push
         exit 0
         ;;
     "backup")

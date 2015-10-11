@@ -36,6 +36,7 @@ secret.json
 /ops/ops.host.conf
 /ops/ops.prod.conf
 /ops/cron-daily.sh
+/ops/cron-notes.sh
 
 # Domains
 /html/bender
