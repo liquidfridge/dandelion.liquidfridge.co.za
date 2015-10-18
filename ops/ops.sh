@@ -641,6 +641,9 @@ function do_features_export () {
     IFS="$OLDIFS"
 
     cd "${G_DRUPAL_ROOT}"
+
+    # Disable modules used during dev
+    drush dis -y coder devel devel_themer
     drush cc all
 
     rm -fr "sites/all/modules/${MODULE}"
