@@ -371,7 +371,6 @@ variable:xmlsitemap_minimum_lifetime
 variable:xmlsitemap_output_elements
 variable:xmlsitemap_path
 variable:xmlsitemap_prefetch_aliases
-variable:xmlsitemap_rebuild_needed
 variable:xmlsitemap_settings_node_book
 variable:xmlsitemap_settings_node_page
 variable:xmlsitemap_xsl
