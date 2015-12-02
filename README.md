@@ -141,6 +141,8 @@ G_NOTES_ROOT=""                                         # Parent directory of lo
 G_NOTES_REPO_URL=""                                     # SSH URL of remote repo
 G_NOTES_REPO_NAME="dandelion-notes"                     # Name of repo
 G_NOTES_EXPORT_URL=""                                   # URL to download and save to repo
+
+G_ETHERPAD_ROOT=""                                      # Etherpad root directory
 ```
 
 
